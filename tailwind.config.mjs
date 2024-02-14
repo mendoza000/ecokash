@@ -13,6 +13,14 @@ export default {
 	plugins: [
 		nextui({
 			defaultTheme: "dark",
+			layout: {
+				disabledOpacity: "0.3", // opacity-[0.3]
+				radius: {
+					small: "2px", // rounded-small
+					medium: "3px", // rounded-medium
+					large: "4px", // rounded-large
+				},
+			},
 		}),
 	],
 };
