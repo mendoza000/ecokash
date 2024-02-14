@@ -1,0 +1,40 @@
+---
+import { IconCoinFilled, IconHome, IconUser } from "@tabler/icons-react";
+import NavbarAccount from "./navbar-account";
+import { IconSettings2 } from "@tabler/icons-react";
+import { Button } from "@nextui-org/react";
+---
+
+<nav
+	class="py-2 bg-zinc-900 min-w-full fixed md:relative bottom-0 rounded-t-xl backdrop-blur-xl z-20 md:rounded-t-none border-t-2 border-zinc-800"
+>
+	<div class="flex justify-around md:hidden">
+		<a class="inline-flex p-2 rounded-xl">
+			<IconUser size={30} />
+		</a>
+
+		<a class="bg-blue-500 text-zinc-900 inline-flex p-2 rounded-xl" href="/">
+			<IconHome size={30} />
+		</a>
+
+		<a class="inline-flex p-2 rounded-xl">
+			<IconSettings2 size={30} />
+		</a>
+	</div>
+
+	<div
+		class="hidden md:flex px-5 max-w-[60rem] mx-auto items-center justify-between"
+	>
+		<a class="flex items-center gap-2" href="/">
+			<IconCoinFilled />
+			<span class="font-bold text-2xl">EcoKash</span>
+		</a>
+
+		<div class="flex items-center gap-2">
+			<NavbarAccount client:visible />
+			<Button client:visible isIconOnly variant="bordered">
+				<IconSettings2 />
+			</Button>
+		</div>
+	</div>
+</nav>
