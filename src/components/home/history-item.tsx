@@ -39,7 +39,7 @@ export default function HistoryItem(props: Props) {
 					<p className="text-xs opacity-50">{props.category}</p>
 				</div>
 
-				<div className="font-bold text-xl ml-auto my-auto">
+				<div className="font-bold ml-auto my-auto">
 					<p
 						className={
 							props.type === "revenue" ? "text-blue-500" : "text-red-500"
