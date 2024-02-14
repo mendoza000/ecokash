@@ -13,13 +13,6 @@ export default {
 	plugins: [
 		nextui({
 			defaultTheme: "dark",
-			themes: {
-				dark: {
-					colors: {
-						// background: "#181818",
-					},
-				},
-			},
 		}),
 	],
 };

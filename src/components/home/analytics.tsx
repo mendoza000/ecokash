@@ -4,7 +4,7 @@ import { IconPigMoney, IconCashOff } from "@tabler/icons-react";
 export default function Analytics() {
 	return (
 		<div className="grid grid-cols-1 gap-2 md:grid-cols-2">
-			<Card className="bg-gradient-to-tr from-blue-600 via-blue-600/50 to-zinc-900">
+			<Card className="bg-gradient-to-tr from-blue-500 via-blue-500 to-blue-300">
 				<CardHeader className="gap-2">
 					<h2 className="">Total balance</h2>
 				</CardHeader>

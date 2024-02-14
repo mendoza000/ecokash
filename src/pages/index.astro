@@ -4,7 +4,7 @@ import Navbar from "../components/ui/navbar.astro";
 import { IconCoinFilled } from "@tabler/icons-react";
 import Analytics from "../components/home/analytics.tsx";
 import Actions from "../components/home/actions.tsx";
-import History from "../components/home/history.tsx";
+import Content from "../components/home/content.tsx";
 ---
 
 <Layout title="EcoKash">
@@ -21,7 +21,7 @@ import History from "../components/home/history.tsx";
 
 			<Analytics />
 			<Actions client:visible />
-			<History client:visible />
+			<Content client:visible />
 		</div>
 	</main>
 </Layout>
