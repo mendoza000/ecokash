@@ -16,7 +16,8 @@ import {
 	IconMail,
 	IconLock,
 } from "@tabler/icons-react";
-import RevenueModal from "./modals/revenue-moda";
+import RevenueModal from "./modals/revenue-modal";
+import ExpenseModal from "./modals/expense-modal";
 
 export default function Actions() {
 	const {
@@ -33,13 +34,14 @@ export default function Actions() {
 	return (
 		<>
 			<RevenueModal isOpen={isOpenRevenue} onOpenChange={onOpenChangeRevenue} />
+			<ExpenseModal isOpen={isOpenExpense} onOpenChange={onOpenChangeExpense} />
 
 			<div className="grid grid-cols-2 gap-2">
 				<Button variant="faded" onPress={onOpenRevenue}>
 					<IconTrendingUp size={20} />
 					New revenue
 				</Button>
-				<Button variant="faded">
+				<Button variant="faded" onPress={onOpenExpense}>
 					<IconTrendingDown size={20} />
 					New expense
 				</Button>
