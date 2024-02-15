@@ -16,9 +16,9 @@ export default {
 			layout: {
 				disabledOpacity: "0.3", // opacity-[0.3]
 				radius: {
-					small: "2px", // rounded-small
-					medium: "4px", // rounded-medium
-					large: "6px", // rounded-large
+					small: "6px", // rounded-small
+					medium: "8px", // rounded-medium
+					large: "10px", // rounded-large
 				},
 			},
 		}),
