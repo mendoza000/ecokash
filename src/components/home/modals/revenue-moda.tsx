@@ -69,7 +69,7 @@ export default function RevenueModal(props: Props) {
 								Close
 							</Button>
 							<Button color="primary" onPress={onClose}>
-								Action
+								Create
 							</Button>
 						</ModalFooter>
 					</>
