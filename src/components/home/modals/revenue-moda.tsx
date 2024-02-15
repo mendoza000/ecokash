@@ -8,8 +8,16 @@ import {
 	ModalContent,
 	ModalFooter,
 	ModalHeader,
+	Select,
+	SelectItem,
 } from "@nextui-org/react";
+import {
+	IconCalculator,
+	IconCategory2,
+	IconWriting,
+} from "@tabler/icons-react";
 import { IconMail, IconLock } from "@tabler/icons-react";
+import { defaultCategories } from "../../../data/default/categories";
 
 interface Props {
 	isOpen: boolean;
@@ -27,39 +35,34 @@ export default function RevenueModal(props: Props) {
 				{(onClose) => (
 					<>
 						<ModalHeader className="flex flex-col gap-1">
-							Modal Title
+							New Revenue
 						</ModalHeader>
 						<ModalBody>
 							<Input
 								autoFocus
-								endContent={
-									<IconMail className="text-2xl text-default-400 pointer-events-none flex-shrink-0" />
-								}
-								label="Email"
-								placeholder="Enter your email"
-								variant="bordered"
+								endContent={<IconWriting className="text-default-400" />}
+								label="Name"
+								placeholder="Enter the name"
 							/>
 							<Input
-								endContent={
-									<IconLock className="text-2xl text-default-400 pointer-events-none flex-shrink-0" />
-								}
-								label="Password"
-								placeholder="Enter your password"
-								type="password"
-								variant="bordered"
+								endContent={<IconCalculator className="text-default-400" />}
+								label="Amount"
+								placeholder="Enter the Amount"
+								type="number"
 							/>
-							<div className="flex py-2 px-1 justify-between">
-								<Checkbox
-									classNames={{
-										label: "text-small",
-									}}
-								>
-									Remember me
-								</Checkbox>
-								<Link color="primary" href="#" size="sm">
-									Forgot password?
-								</Link>
-							</div>
+
+							<Select
+								label="Select an animal"
+								// endContent={<IconCategory2 className="text-default-400" />}
+							>
+								{defaultCategories.map((c) => {
+									return (
+										<SelectItem key={c.id} value={c.id}>
+											{`${c.icon} ${c.name}`}
+										</SelectItem>
+									);
+								})}
+							</Select>
 						</ModalBody>
 						<ModalFooter>
 							<Button color="danger" variant="light" onPress={onClose}>
