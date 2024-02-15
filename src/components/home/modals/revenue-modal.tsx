@@ -1,8 +1,6 @@
 import {
 	Button,
-	Checkbox,
 	Input,
-	Link,
 	Modal,
 	ModalBody,
 	ModalContent,
@@ -11,13 +9,8 @@ import {
 	Select,
 	SelectItem,
 } from "@nextui-org/react";
-import {
-	IconCalculator,
-	IconCategory2,
-	IconWriting,
-} from "@tabler/icons-react";
-import { IconMail, IconLock } from "@tabler/icons-react";
-import { defaultCategories } from "../../../data/default/categories";
+import { IconCalculator, IconWriting } from "@tabler/icons-react";
+import { defaultRevenueCategories } from "../../../data/default/revenue-categories";
 
 interface Props {
 	isOpen: boolean;
@@ -52,10 +45,10 @@ export default function RevenueModal(props: Props) {
 							/>
 
 							<Select
-								label="Select an animal"
+								label="Select a category"
 								// endContent={<IconCategory2 className="text-default-400" />}
 							>
-								{defaultCategories.map((c) => {
+								{defaultRevenueCategories.map((c) => {
 									return (
 										<SelectItem key={c.id} value={c.id}>
 											{`${c.icon} ${c.name}`}
