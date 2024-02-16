@@ -7,7 +7,7 @@ export interface Category {
 export interface Revenue {
   uuid: string;
   category: Category;
-  amount: number;
+  amount: number | string;
   date: string;
   type: "revenue";
   title: string;
@@ -16,7 +16,7 @@ export interface Revenue {
 export interface Expense {
   uuid: string;
   category: Category;
-  amount: number;
+  amount: number | string;
   date: string;
   type: "expense";
   title: string;
