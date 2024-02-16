@@ -43,7 +43,7 @@ export default function HistoryItem(props: Props) {
 		<div className="flex flex-col gap-2">
 			<div className="flex gap-3">
 				<div
-					className={`rounded-xl p-2 inline-flex items-center justify-center ${
+					className={`rounded-xl p-2 inline-flex items-center justify-center w-10 h-10 ${
 						props.type === "revenue" ? "bg-blue-500" : "bg-red-500"
 					}`}
 				>
