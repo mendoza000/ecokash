@@ -10,7 +10,7 @@ export default function Content() {
 
 	return (
 		<div>
-			<Card className="min-h-[30rem] max-h-[30rem] md:min-h-[25rem] md:max-h-[25rem]">
+			<Card className="min-h-[30rem] md:min-h-[25rem] ">
 				<Tabs
 					fullWidth
 					size="md"
