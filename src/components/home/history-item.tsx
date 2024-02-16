@@ -16,15 +16,29 @@ import {
 import { formatToUs } from "../../lib/format-to-us";
 import { IconDotsVertical } from "@tabler/icons-react";
 import type { Category } from "../../types";
+import { useRevenuesStore } from "../../store/revenues";
+import { useExpensesStore } from "../../store/expenses";
 
 interface Props {
 	type: "revenue" | "expense";
 	title: string;
 	amount: number;
 	category: Category;
+	uuid: string;
 }
 
 export default function HistoryItem(props: Props) {
+	const { removeRevenue } = useRevenuesStore((state) => state);
+	const { removeExpense } = useExpensesStore((state) => state);
+
+	const handleDelete = () => {
+		if (props.type === "revenue") {
+			removeRevenue(props.uuid);
+		} else {
+			removeExpense(props.uuid);
+		}
+	};
+
 	return (
 		<div className="flex flex-col gap-2">
 			<div className="flex gap-3">
@@ -73,6 +87,7 @@ export default function HistoryItem(props: Props) {
 								startContent={<IconTrash size={18} />}
 								className="text-danger"
 								color="danger"
+								onPress={handleDelete}
 							>
 								Delete file
 							</DropdownItem>
