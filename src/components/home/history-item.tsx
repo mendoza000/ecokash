@@ -15,12 +15,13 @@ import {
 } from "@tabler/icons-react";
 import { formatToUs } from "../../lib/format-to-us";
 import { IconDotsVertical } from "@tabler/icons-react";
+import type { Category } from "../../types";
 
 interface Props {
 	type: "revenue" | "expense";
 	title: string;
 	amount: number;
-	category: string;
+	category: Category;
 }
 
 export default function HistoryItem(props: Props) {
@@ -36,7 +37,7 @@ export default function HistoryItem(props: Props) {
 				</div>
 				<div>
 					<p className="font-semibold">{props.title}</p>
-					<p className="text-xs opacity-50">{props.category}</p>
+					<p className="text-xs opacity-50">{`${props.category.icon} ${props.category.name}`}</p>
 				</div>
 
 				<div className="font-bold ml-auto my-auto">
