@@ -11,6 +11,10 @@ import {
 } from "@nextui-org/react";
 import { IconCalculator, IconWriting } from "@tabler/icons-react";
 import { defaultRevenueCategories } from "../../../data/default/revenue-categories";
+import { useEffect, useState } from "react";
+import type { Revenue } from "../../../types";
+import { v4 as uuidv4 } from "uuid";
+import { useRevenuesStore } from "../../../store/revenues";
 
 interface Props {
 	isOpen: boolean;
@@ -18,6 +22,55 @@ interface Props {
 }
 
 export default function RevenueModal(props: Props) {
+	const { addRevenue } = useRevenuesStore((state) => state);
+
+	const [form, setForm] = useState<Revenue>({
+		amount: 0,
+		category: defaultRevenueCategories[0],
+		title: "",
+		type: "revenue",
+		date: new Date().toISOString(),
+		uuid: "",
+	});
+
+	const handleChangeForm = (name: string, value: string | number) => {
+		setForm((prev) => ({
+			...prev,
+			[name]: value,
+		}));
+	};
+
+	const handleChangeCategory = (key: any) => {
+		const category = defaultRevenueCategories.find(
+			(c) => c.id === key.values().next().value
+		);
+
+		if (category) {
+			setForm((prev) => ({
+				...prev,
+				category: category,
+			}));
+		}
+	};
+
+	const handleCreateRevenue = () => {
+		setForm((prev) => ({
+			...prev,
+			uuid: uuidv4(),
+		}));
+
+		addRevenue(form);
+
+		setForm(() => ({
+			amount: 0,
+			category: defaultRevenueCategories[0],
+			title: "",
+			type: "revenue",
+			date: new Date().toISOString(),
+			uuid: "",
+		}));
+	};
+
 	return (
 		<Modal
 			isOpen={props.isOpen}
@@ -36,16 +89,22 @@ export default function RevenueModal(props: Props) {
 								endContent={<IconWriting className="text-default-400" />}
 								label="Name"
 								placeholder="Enter the name"
+								onChange={(e) => handleChangeForm("title", e.target.value)}
+								value={form.title}
 							/>
 							<Input
 								endContent={<IconCalculator className="text-default-400" />}
 								label="Amount"
 								placeholder="Enter the Amount"
 								type="number"
+								onChange={(e) => handleChangeForm("amount", e.target.value)}
+								value={`${form.amount}`}
 							/>
 
 							<Select
 								label="Select a category"
+								defaultSelectedKeys={[form.category.id]}
+								onSelectionChange={(key) => handleChangeCategory(key)}
 								// endContent={<IconCategory2 className="text-default-400" />}
 							>
 								{defaultRevenueCategories.map((c) => {
@@ -61,7 +120,7 @@ export default function RevenueModal(props: Props) {
 							<Button color="danger" variant="light" onPress={onClose}>
 								Close
 							</Button>
-							<Button color="primary" onPress={onClose}>
+							<Button color="primary" onPress={handleCreateRevenue}>
 								Create
 							</Button>
 						</ModalFooter>
