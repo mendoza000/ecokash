@@ -17,7 +17,7 @@ export default function TabHistory() {
 					<HistoryItem
 						type={e.type}
 						amount={parseFloat(e.amount as string)}
-						category={e.category.id}
+						category={e.category}
 						title={e.title}
 						key={e.uuid}
 					/>
