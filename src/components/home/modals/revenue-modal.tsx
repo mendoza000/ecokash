@@ -15,6 +15,7 @@ import { useEffect, useState } from "react";
 import type { Revenue } from "../../../types";
 import { v4 as uuidv4 } from "uuid";
 import { useRevenuesStore } from "../../../store/revenues";
+import useGetHistory from "../../../hooks/useGetHistory";
 
 interface Props {
 	isOpen: boolean;
@@ -23,6 +24,7 @@ interface Props {
 
 export default function RevenueModal(props: Props) {
 	const { addRevenue } = useRevenuesStore((state) => state);
+	const history = useGetHistory();
 
 	const [form, setForm] = useState<Revenue>({
 		amount: 0,
@@ -30,7 +32,7 @@ export default function RevenueModal(props: Props) {
 		title: "",
 		type: "revenue",
 		date: new Date().toISOString(),
-		uuid: "",
+		uuid: `${history.length + 1}`,
 	});
 
 	const handleChangeForm = (name: string, value: string | number) => {
@@ -51,14 +53,10 @@ export default function RevenueModal(props: Props) {
 				category: category,
 			}));
 		}
+		console.log(history);
 	};
 
 	const handleCreateRevenue = () => {
-		setForm((prev) => ({
-			...prev,
-			uuid: uuidv4(),
-		}));
-
 		addRevenue(form);
 
 		setForm(() => ({
@@ -67,7 +65,7 @@ export default function RevenueModal(props: Props) {
 			title: "",
 			type: "revenue",
 			date: new Date().toISOString(),
-			uuid: "",
+			uuid: `${history.length + 1}`,
 		}));
 	};
 
