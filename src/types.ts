@@ -5,15 +5,19 @@ export interface Category {
 }
 
 export interface Revenue {
-  id: string;
+  uuid: string;
   category: Category;
   amount: number;
   date: string;
+  type: "revenue";
+  title: string;
 }
 
 export interface Expense {
-  id: string;
+  uuid: string;
   category: Category;
   amount: number;
   date: string;
+  type: "expense";
+  title: string;
 }
