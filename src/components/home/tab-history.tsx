@@ -20,6 +20,7 @@ export default function TabHistory() {
 						category={e.category}
 						title={e.title}
 						key={e.uuid}
+						uuid={e.uuid}
 					/>
 				);
 			})}
