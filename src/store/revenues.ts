@@ -29,7 +29,7 @@ export const useRevenuesStore = create<RevenuesState>()(
         removeRevenue: (id) => set((state) => {
           return {
             ...state,
-            revenues: state.revenues.filter((revenue) => revenue.id !== id),
+            revenues: state.revenues.filter((revenue) => revenue.uuid !== id),
           }
         }),
       }),
