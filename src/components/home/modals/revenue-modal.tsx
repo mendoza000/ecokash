@@ -32,7 +32,7 @@ export default function RevenueModal(props: Props) {
 		title: "",
 		type: "revenue",
 		date: new Date().toISOString(),
-		uuid: `${history.length + 1}`,
+		uuid: uuidv4(),
 	});
 
 	const handleChangeForm = (name: string, value: string | number) => {
@@ -53,10 +53,11 @@ export default function RevenueModal(props: Props) {
 				category: category,
 			}));
 		}
-		console.log(history);
 	};
 
 	const handleCreateRevenue = () => {
+		const id = uuidv4();
+
 		addRevenue({
 			...form,
 			amount: parseFloat(form.amount as string),
@@ -68,7 +69,7 @@ export default function RevenueModal(props: Props) {
 			title: "",
 			type: "revenue",
 			date: new Date().toISOString(),
-			uuid: `${history.length + 1}`,
+			uuid: id,
 		}));
 	};
 
