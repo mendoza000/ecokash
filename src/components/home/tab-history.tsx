@@ -5,8 +5,6 @@ import useGetHistory from "../../hooks/useGetHistory";
 export default function TabHistory() {
 	const history = useGetHistory();
 
-	console.log(history);
-
 	return (
 		<CardBody className="gap-3 min-h-full">
 			{history.length < 1 && (
