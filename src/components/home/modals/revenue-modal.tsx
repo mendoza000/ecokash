@@ -57,7 +57,10 @@ export default function RevenueModal(props: Props) {
 	};
 
 	const handleCreateRevenue = () => {
-		addRevenue(form);
+		addRevenue({
+			...form,
+			amount: parseFloat(form.amount as string),
+		});
 
 		setForm(() => ({
 			amount: 0,
