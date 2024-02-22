@@ -26,12 +26,14 @@ export const useExpensesStore = create<ExpensesState>()(
             expenses: [...state.expenses, expense],
           }
         }),
-        removeExpense: (id) => set((state) => {
-          return {
+        removeExpense: (id) => {
+          const expenses = get().expenses.filter((e) => e.uuid !== id);
+
+          set((state) => ({
             ...state,
-            revenues: state.expenses.filter((expense) => expense.uuid !== id),
-          }
-        }),
+            expenses
+          }))
+        },
       }),
       {name: "ek-e"}
     )
