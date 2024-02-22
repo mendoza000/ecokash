@@ -11,11 +11,10 @@ import {
 } from "@nextui-org/react";
 import { IconCalculator, IconWriting } from "@tabler/icons-react";
 import { defaultRevenueCategories } from "../../../data/default/revenue-categories";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import type { Revenue } from "../../../types";
 import { v4 as uuidv4 } from "uuid";
 import { useRevenuesStore } from "../../../store/revenues";
-import useGetHistory from "../../../hooks/useGetHistory";
 
 interface Props {
 	isOpen: boolean;
@@ -24,7 +23,6 @@ interface Props {
 
 export default function RevenueModal(props: Props) {
 	const { addRevenue } = useRevenuesStore((state) => state);
-	const history = useGetHistory();
 
 	const [form, setForm] = useState<Revenue>({
 		amount: 0,
